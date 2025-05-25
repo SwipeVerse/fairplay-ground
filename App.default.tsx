@@ -1,117 +1,69 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {StyleSheet, Text, View, ScrollView, SafeAreaView} from 'react-native';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const App = () => (
+  <SafeAreaView style={styles.container}>
+    <Text style={styles.titleName}> Laila </Text>
+    <Text style={styles.bio}> "I am not here for timepass"</Text>
+     <ScrollView >
+    <View style={{justifyContent: 'center',alignItems: 'right'}}>
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
+   
+      <Text style={styles.attributes}>23</Text> 
+      <Text style={styles.attributes}>Woman</Text> 
+      <Text style={styles.attributes}>Straight</Text> 
+      <Text style={styles.attributes}>Sector 2</Text> 
+      <Text style={styles.attributes}>Yes</Text> 
+      <Text style={styles.attributes}>Cat</Text> 
+      <Text style={styles.attributes}>5'4</Text> 
+      <Text style={styles.attributes}>No</Text> 
+      <Text style={styles.attributes}>Don't Want</Text> 
+      <Text style={styles.attributes}>No</Text> 
+      <Text style={styles.attributes}>No</Text> 
     </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
+    </ScrollView>
+    <Text style={styles.title}>SwipeVerse</Text>
+  </SafeAreaView>
+);
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  attributes: { 
+    padding: 5, flexDirection: 'row',  flexWrap: 'wrap', fontSize: 10, color: '#f4f0d3'
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  row: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: 'background-image: linear-gradient( 85.2deg,  rgba(33,3,40,1) 7.5%, rgba(65,5,72,1) 88.7% );',
   },
-  highlight: {
-    fontWeight: '700',
+  bio:{
+    paddingVertical: 1,
+    color: '#f4f0d3',
+    textAlign: 'left',
+    fontSize: 17
+  },
+  titleName: {
+    marginTop: 16,
+    paddingVertical: 8,
+    color: '#f4f0d3',
+    textAlign: 'left',
+    fontSize: 31,
+    fontWeight: 'bold',
+  },
+  title: {
+    marginTop: 16,
+    paddingVertical: 8,
+    borderWidth: 4,
+    borderColor: '#20232a',
+    borderRadius: 6,
+    backgroundColor: '#61dafb',
+    color: '#20232a',
+    textAlign: 'center',
+    fontSize: 30,
+    fontWeight: 'bold',
   },
 });
 

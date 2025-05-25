@@ -1,70 +1,177 @@
 import React from 'react';
-import {StyleSheet, Text, View, ScrollView, SafeAreaView} from 'react-native';
+import {StyleSheet, Text, View, Image,
+   TouchableOpacity, ScrollView, SafeAreaView,
+   TextInput,
+} from 'react-native';
+import { launchImageLibrary } from 'react-native-image-picker';
 
-const App = () => (
-  <SafeAreaView style={styles.container}>
-    <Text style={styles.titleName}> Laila </Text>
-    <Text style={styles.bio}> "I am not here for timepass"</Text>
-     <ScrollView >
-    <View style={{justifyContent: 'center',alignItems: 'right'}}>
+// let InitialResponse: ImagePickerResponse={};
 
-   
-      <Text style={styles.attributes}>23</Text> 
-      <Text style={styles.attributes}>Woman</Text> 
-      <Text style={styles.attributes}>Straight</Text> 
-      <Text style={styles.attributes}>Sector 2</Text> 
-      <Text style={styles.attributes}>Yes</Text> 
-      <Text style={styles.attributes}>Cat</Text> 
-      <Text style={styles.attributes}>5'4</Text> 
-      <Text style={styles.attributes}>No</Text> 
-      <Text style={styles.attributes}>Don't Want</Text> 
-      <Text style={styles.attributes}>No</Text> 
-      <Text style={styles.attributes}>No</Text> 
-    </View>
-    </ScrollView>
-    <Text style={styles.title}>SwipeVerse</Text>
-  </SafeAreaView>
-);
+
+export default function App() {
+  const [photo, setPhoto] = React.useState<any>({});
+  
+  const handleChoosePhoto = () => {
+    launchImageLibrary({mediaType: 'photo'}, setPhoto);
+  };
+  return (
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        {/* Header */}
+        <View style={styles.header}>
+          <View style={styles.backButtonPlaceholder}></View>
+          <Text style={styles.headerTitle}>Create Profile</Text>
+        </View>
+
+        {/* Add Photos */}
+          {/* <Image source={{ uri: 'https://via.placeholder.com/160' }} style={styles.photo} /> */}
+          {/* {[1, 2, 3].map((_, index) => ( */}
+        <Text style={styles.sectionTitle}>Add Photos</Text>
+        <ScrollView horizontal style={styles.photoContainer}>
+              {photo?.assets && photo.assets.map((p: any)=>{
+                {console.log('iterating through photo', p.uri)}
+            <View key={p.fileName} style={styles.photoBox}>
+                <Image source={{ uri: p.uri }}          style={{ width: 300, height: 300 }}          />
+          
+            </View>
+  })}
+        </ScrollView>
+        <View style={styles.saveContainer} >
+          <TouchableOpacity style={styles.saveButton} onPress={handleChoosePhoto}>
+            <Text style={styles.saveText}>Add Photos</Text>
+          </TouchableOpacity>
+        </View>
+
+
+
+        {/* About Me */}
+        <Text style={styles.sectionTitle}>About Me</Text>
+        <View style={styles.aboutBox}>
+          <TextInput style={styles.aboutText} placeholder='Add something about yourself'></TextInput>
+        </View>
+
+        {/* Basic Info */}
+        <Text style={styles.sectionTitle}>Basic Info</Text>
+        <View style={styles.infoBox}>
+          <Text style={styles.infoText}>Age: 28</Text>
+        </View>
+        <View style={styles.infoBox}>
+          <Text style={styles.infoText}>Gender: Female</Text>
+        </View>
+
+        {/* Interests */}
+        <Text style={styles.sectionTitle}>Interests</Text>
+        <View style={styles.interestsContainer}>
+          {['Hiking', 'Reading', 'Cooking', 'Travel', 'Music', 'Art'].map((interest, index) => (
+            <View key={index} style={styles.interestChip}>
+              <Text style={styles.interestText}>{interest}</Text>
+            </View>
+          ))}
+        </View>
+
+        {/* Save Button */}
+        <View style={styles.saveContainer}>
+          <TouchableOpacity style={styles.saveButton}>
+            <Text style={styles.saveText}>Save Profile</Text>
+          </TouchableOpacity>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
+  );
+}
 
 const styles = StyleSheet.create({
-  attributes: { 
-    padding: 5, flexDirection: 'row',  flexWrap: 'wrap', fontSize: 10, color: '#f4f0d3'
-  },
-  row: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-  },
   container: {
     flex: 1,
-    padding: 24,
-    backgroundColor: 'background-image: linear-gradient( 85.2deg,  rgba(33,3,40,1) 7.5%, rgba(65,5,72,1) 88.7% );',
+    backgroundColor: '#171221',
   },
-  bio:{
-    paddingVertical: 1,
-    color: '#f4f0d3',
-    textAlign: 'left',
-    fontSize: 17
+  header: {
+    flexDirection: 'row',
+    padding: 16,
+    alignItems: 'center',
+    justifyContent: 'space-between',
   },
-  titleName: {
-    marginTop: 16,
-    paddingVertical: 8,
-    color: '#f4f0d3',
-    textAlign: 'left',
-    fontSize: 31,
-    fontWeight: 'bold',
+  backButtonPlaceholder: {
+    width: 48,
+    height: 48,
   },
-  title: {
-    marginTop: 16,
-    paddingVertical: 8,
-    borderWidth: 4,
-    borderColor: '#20232a',
-    borderRadius: 6,
-    backgroundColor: '#61dafb',
-    color: '#20232a',
-    textAlign: 'center',
-    fontSize: 30,
-    fontWeight: 'bold',
+  headerTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  sectionTitle: {
+    padding: 16,
+    fontSize: 18,
+    fontWeight: '700',
+    color: '#FFFFFF',
+  },
+  photoContainer: {
+    flexDirection: 'row',
+    paddingLeft: 16,
+    marginBottom: 16,
+  },
+  photoBox: {
+    marginRight: 12,
+    borderRadius: 8,
+    overflow: 'hidden',
+  },
+  photo: {
+    width: 160,
+    height: 160,
+    borderRadius: 12,
+  },
+  aboutBox: {
+    backgroundColor: '#2E2447',
+    borderRadius: 12,
+    padding: 16,
+    marginHorizontal: 16,
+    marginBottom: 16,
+  },
+  aboutText: {
+    color: '#FFFFFF',
+  },
+  infoBox: {
+    backgroundColor: '#2E2447',
+    borderRadius: 12,
+    padding: 16,
+    marginHorizontal: 16,
+    marginBottom: 16,
+  },
+  infoText: {
+    color: '#A394C7',
+    fontSize: 16,
+  },
+  interestsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingHorizontal: 12,
+    gap: 8,
+  },
+  interestChip: {
+    backgroundColor: '#2E2447',
+    paddingHorizontal: 16,
+    paddingVertical: 6,
+    borderRadius: 16,
+    margin: 4,
+  },
+  interestText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+  },
+  saveContainer: {
+    padding: 16,
+    alignItems: 'center',
+  },
+  saveButton: {
+    backgroundColor: '#6930E8',
+    paddingHorizontal: 20,
+    paddingVertical: 12,
+    borderRadius: 24,
+  },
+  saveText: {
+    color: '#FFFFFF',
+    fontSize: 16,
+    fontWeight: '700',
   },
 });
-
-export default App;
