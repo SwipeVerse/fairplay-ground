@@ -3,17 +3,34 @@ import {StyleSheet, Text, View, Image,
    TouchableOpacity, ScrollView, SafeAreaView,
    TextInput,
 } from 'react-native';
-import { launchImageLibrary } from 'react-native-image-picker';
-
-// let InitialResponse: ImagePickerResponse={};
+import { launchImageLibrary, ImagePickerResponse } from 'react-native-image-picker';
 
 
 export default function App() {
-  const [photo, setPhoto] = React.useState<any>({});
+  // const [photo, setPhoto] =   React.useState<any>([]);
+  const [photo, setPhoto] =   React.useState<any>(null); 
   
-  const handleChoosePhoto = () => {
-    launchImageLibrary({mediaType: 'photo'}, setPhoto);
-  };
+  const handleChoosePhoto = React.useCallback(() => {
+    launchImageLibrary({mediaType: 'photo'}, (response: ImagePickerResponse)=> {
+      if(response.assets?.length != 0) {
+        console.log('response',response.assets)
+        
+        // set in array
+        // setPhoto([
+        //   ...photo,
+        //   response.assets
+        // ])
+      
+        setPhoto(response)  
+      }
+    });
+  }, []);
+
+  // React.useEffect(()=>{
+  //   console.log(photo)
+  // }, [photo])
+
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView>
@@ -24,18 +41,19 @@ export default function App() {
         </View>
 
         {/* Add Photos */}
-          {/* <Image source={{ uri: 'https://via.placeholder.com/160' }} style={styles.photo} /> */}
-          {/* {[1, 2, 3].map((_, index) => ( */}
         <Text style={styles.sectionTitle}>Add Photos</Text>
         <ScrollView horizontal style={styles.photoContainer}>
-              {photo?.assets && photo.assets.map((p: any)=>{
-                {console.log('iterating through photo', p.uri)}
-            <View key={p.fileName} style={styles.photoBox}>
-                <Image source={{ uri: p.uri }}          style={{ width: 300, height: 300 }}          />
-          
-            </View>
-  })}
+        {photo?.assets && photo?.assets.map((p: any, i:number)=>{
+          console.log(p)
+          console.log('index', i)
+          // console.log('photo',photo)
+            return  (
+            <View key={i} style={styles.photoBox}>
+            <Image source={{uri: p.uri}} style={styles.photo}/>
+            </View>)
+            })}
         </ScrollView>
+  
         <View style={styles.saveContainer} >
           <TouchableOpacity style={styles.saveButton} onPress={handleChoosePhoto}>
             <Text style={styles.saveText}>Add Photos</Text>
@@ -47,7 +65,7 @@ export default function App() {
         {/* About Me */}
         <Text style={styles.sectionTitle}>About Me</Text>
         <View style={styles.aboutBox}>
-          <TextInput style={styles.aboutText} placeholder='Add something about yourself'></TextInput>
+          <TextInput style={styles.aboutText} placeholder='Add something about yourself' placeholderTextColor="#A394C7"></TextInput>
         </View>
 
         {/* Basic Info */}
