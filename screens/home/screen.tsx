@@ -1,21 +1,29 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image,
-   TouchableOpacity, ScrollView, SafeAreaView,
-   TextInput,
+import { Text, View, Image,
+   TouchableOpacity, SafeAreaView
 } from 'react-native';
 
+import swLogo from '../../public/logo.png'
+import styles from './styles';
 
-export default function Home() {
+const logoUri = Image.resolveAssetSource(swLogo).uri
+
+export default function Home({ navigation }) {
 return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView></ScrollView>
-    </SafeAreaView>
+  <SafeAreaView style={styles.container}>
+    <View style={styles.logoContainer}>
+      {/* Replace with your actual logo */}
+      <Image
+        source={{uri: logoUri}}
+        style={styles.logo}
+      />
+    </View>
+
+    <TouchableOpacity
+      style={styles.startButton}
+      onPress={() => navigation.navigate('CreateProfile')}>
+        <Text style={styles.startButtonText}>Let’s Start</Text>
+    </TouchableOpacity>
+  </SafeAreaView>
 )}
 
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#171221',
-      }
-})
