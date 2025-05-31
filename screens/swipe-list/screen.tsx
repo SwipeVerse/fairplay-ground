@@ -1,24 +1,27 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native';
 
+
+import avatarImg from '../../public/avatar_swipelist.png'
 import styles from './styles';
 
+const avatarUri = Image.resolveAssetSource(avatarImg).uri
 
 const SwipeProfileScreen = () => {
   return (
     <View style={styles.container}>
       {/* Header */}
-      <View style={styles.header}>
+      {/* <View style={styles.header}>
         <Text style={styles.title}>SwipeVerse</Text>
         <View style={styles.iconPlaceholder} />
-      </View>
+      </View> */}
 
       {/* Profile Section */}
       <ScrollView contentContainerStyle={styles.scroll}>
         <View style={styles.profileCard}>
           {/* Avatar + Info */}
           <Image
-            source={{ uri: 'https://via.placeholder.com/128' }}
+            source={{ uri: avatarUri }}
             style={styles.avatar}
           />
           <Text style={styles.name}>Sophia, 24</Text>

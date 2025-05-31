@@ -4,33 +4,73 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#171221',
-    justifyContent: 'space-between',
+  },
+  scrollContainer: {
+    paddingHorizontal: 16,
+    paddingBottom: 20,
+  },
+  header: {
+    flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 80,
+    backgroundColor: '#171221',
+    paddingVertical: 16,
+    paddingHorizontal: 16,
   },
-  logoContainer: {
-    flex: 1,
+  backButton: {
+    width: 48,
+    height: 48,
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  logo: {
-    width: 180,
-    height: 180,
-    resizeMode: 'contain',
+  backIcon: {
+    color: '#FFFFFF',
+    fontSize: 24,
   },
-  startButton: {
-    backgroundColor: '#6930E8',
-    paddingVertical: 14,
-    paddingHorizontal: 32,
-    borderRadius: 24,
-    marginBottom: 40,
+  headerTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '700',
+    marginLeft: 8,
   },
-  startButtonText: {
+  sectionTitle: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    fontWeight: '700',
+    marginTop: 24,
+    marginBottom: 8,
+  },
+  row: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#171221',
+    paddingVertical: 12,
+    gap: 16,
+  },
+  avatar: {
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+  },
+  iconBox: {
+    width: 48,
+    height: 48,
+    backgroundColor: '#2E2447',
+    borderRadius: 8,
+  },
+  label: {
     color: '#FFFFFF',
     fontSize: 16,
-    fontWeight: '700',
-    textAlign: 'center',
+    fontWeight: '500',
   },
-})
+  subLabel: {
+    color: '#A394C7',
+    fontSize: 14,
+    fontWeight: '400',
+    marginTop: 2,
+    width: 280,
+  },
+});
+
 
 
 export default styles;
