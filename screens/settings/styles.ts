@@ -55,7 +55,9 @@ const styles = StyleSheet.create({
     width: 48,
     height: 48,
     backgroundColor: '#2E2447',
-    borderRadius: 8,
+    alignItems: 'center',
+    justifyContent: 'center'
+    // borderRadius: 8,
   },
   label: {
     color: '#FFFFFF',

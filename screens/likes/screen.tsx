@@ -2,6 +2,12 @@ import React from 'react';
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native';
 
 import styles from './styles';
+import avaImg from '../../public/chat_person5.png'
+import oliviaImg from '../../public/chat_person6.png'
+
+
+const avaImgUri = Image.resolveAssetSource(avaImg).uri
+const oliviaImgUri = Image.resolveAssetSource(oliviaImg).uri
 
 
 const LikesScreen = () => {
@@ -9,16 +15,16 @@ const LikesScreen = () => {
   const likedProfiles = [
     {
       id: '1',
-      name: 'Emma',
+      name: 'Olivia',
       age: 26,
-      avatar: 'https://via.placeholder.com/64',
+      avatar: oliviaImgUri,
       matched: true,
     },
     {
       id: '2',
       name: 'Ava',
       age: 24,
-      avatar: 'https://via.placeholder.com/64',
+      avatar: avaImgUri,
       matched: false,
     },
   ];
