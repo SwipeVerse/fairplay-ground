@@ -4,9 +4,12 @@ import { Text, View, Image,
 } from 'react-native';
 
 import swLogo from '../../public/logo.png'
+import googleSignupLogo from '../../public/signup/google.png'
+// import googleSignupLogo from 'public/signup/Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png'
 import styles from './styles';
 
 const logoUri = Image.resolveAssetSource(swLogo).uri
+const googleSignupLogoUri = Image.resolveAssetSource(googleSignupLogo).uri
 
 export default function Home({ navigation }) {
 return (
@@ -20,9 +23,15 @@ return (
     </View>
 
     <TouchableOpacity
-      style={styles.startButton}
+      style={styles.googleView}
       onPress={() => navigation.navigate('CreateProfile')}>
-        <Text style={styles.startButtonText}>Let’s Start</Text>
+        {/* <Text style={styles.startButtonText}>Sign up with Google</Text> */}
+        <Image source={{uri: googleSignupLogoUri}} style={styles.googleButton} />
+    </TouchableOpacity>
+    <TouchableOpacity
+      style={styles.facebookView}
+      onPress={() => navigation.navigate('CreateProfile')}>
+        <Text style={styles.startButtonText}>Sign in with Facebook</Text>
     </TouchableOpacity>
   </SafeAreaView>
 )}
