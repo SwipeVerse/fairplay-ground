@@ -50,9 +50,15 @@ const styles = StyleSheet.create({
   facebookView: {
     backgroundColor: '#1877F2',
     paddingVertical: 14,
-    paddingHorizontal: 32,
+    paddingHorizontal: 12,
     borderRadius: 24,
     marginBottom: 40,
+  },
+
+    fbButton: {
+    width: 24, //'100%',
+    height: 24,
+    // borderRadius: 24,
   },
   
 })

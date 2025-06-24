@@ -7,6 +7,7 @@ import { enableScreens } from 'react-native-screens';
 
 import CreateProfile from './screens/create-profile/screen';
 import HomeScreen from './screens/home/screen';       
+import Mnemonics from './screens/wallet/screen';
 import MainNav from './screens/MainNav';
 import ChatWindow from './screens/chat-window/screen';
 
@@ -24,6 +25,7 @@ export default function App() {
           }}
         >
           <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="Mnemonics" component={Mnemonics} />
           <Stack.Screen name="CreateProfile" component={CreateProfile} />
           <Stack.Screen name="MainNav" component={MainNav} />
           <Stack.Screen name="ChatWindow" component={ChatWindow} />

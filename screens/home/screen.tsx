@@ -5,11 +5,12 @@ import { Text, View, Image,
 
 import swLogo from '../../public/logo.png'
 import googleSignupLogo from '../../public/signup/google.png'
-// import googleSignupLogo from 'public/signup/Facebook Brand Asset Pack/Logo/Secondary Logo/Facebook_Logo_Secondary.png'
+import fbSignupLogo from '../../public/signup/facebook.png'
 import styles from './styles';
 
 const logoUri = Image.resolveAssetSource(swLogo).uri
 const googleSignupLogoUri = Image.resolveAssetSource(googleSignupLogo).uri
+const fbSignupLogoUri = Image.resolveAssetSource(fbSignupLogo).uri
 
 export default function Home({ navigation }) {
 return (
@@ -24,14 +25,17 @@ return (
 
     <TouchableOpacity
       style={styles.googleView}
-      onPress={() => navigation.navigate('CreateProfile')}>
+      onPress={() => navigation.navigate('Mnemonics')}>
         {/* <Text style={styles.startButtonText}>Sign up with Google</Text> */}
         <Image source={{uri: googleSignupLogoUri}} style={styles.googleButton} />
     </TouchableOpacity>
     <TouchableOpacity
       style={styles.facebookView}
       onPress={() => navigation.navigate('CreateProfile')}>
-        <Text style={styles.startButtonText}>Sign in with Facebook</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-start'}}>
+          <Image source={{uri: fbSignupLogoUri}} style={styles.fbButton} />
+          <Text style={[styles.startButtonText, {marginLeft: 12}]}>Sign in with Facebook</Text>
+        </View>
     </TouchableOpacity>
   </SafeAreaView>
 )}
