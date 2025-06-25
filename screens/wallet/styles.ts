@@ -45,6 +45,28 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     fontSize: 16,
   },
+  instructions: {
+    color: '#A394C7',
+    fontSize: 14,
+    marginBottom: 16,
+    textAlign: 'center',
+    paddingHorizontal: 8,
+  },
+  iconButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#2E2447',
+    paddingVertical: 10,
+    paddingHorizontal: 16,
+    borderRadius: 20,
+    alignSelf: 'center',
+    marginTop: 16,
+  },
+  copyText: {
+    color: '#A394C7',
+    fontSize: 14,
+    marginLeft: 8,
+  },
 });
 
 
