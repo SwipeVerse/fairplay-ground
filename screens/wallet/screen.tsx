@@ -44,14 +44,20 @@ const GenerateWalletScreen = ({ navigation }) => {
   }
 
   const storeKey = async (value: string) => {
-  try {
-    await AsyncStorage.setItem('deviceKey', value);
-    console.log('Private key saved')
-  } catch (e) {
-    // saving error
-    Alert.alert('Error', 'Failed to save the private key.')
-  }
-};
+    try {
+      const key = await AsyncStorage.getItem('devicekey')
+      if ( key == null) {
+        // create new key
+        await AsyncStorage.setItem('deviceKey', value);
+        console.log('Private key saved')
+      } else {
+        console.log('Private key already exists, not overwriting.')
+      }
+    } catch (e) {
+      // saving error
+      Alert.alert('Error', 'Failed to save the private key.')
+    }
+  };
 
   const copyToClipboard = () => {
     const phrase = mnemonics.join(' ');
